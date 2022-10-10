@@ -7,6 +7,19 @@
   - Makefile : [ref1](https://www.tuwlab.com/ece/27193) [ref2](https://velog.io/@woodstock1993/Makefile)
 
 
+| funtion / value | "" | "abc" | "Euije Lee" | "chaso1495" | "2019" | "2019019718" | "123456789101112" |
+|-|-|-|-|-|-|-|-|
+|isValidYear|F|F|F|F|T|F|F|
+|isHasOnlyDigit|F|F|F|F|T|T|T|
+|isHasOnlyAlphabet|F|T|F|F|F|F|F|
+|-||||||||
+|isValidName|F|T|T|F|F|F|F|
+|isValidStudentID|F|F|F|F|F|T|F|
+|isValidBirthYear|T|F|F|F|T|F|F|
+|isValidDepartment|T|T|T|T|T|T|T|
+|isValidTel|T|F|F|F|T|T|F|
+
+
 ---
 
 <div id="freedom-iframe-container" style="position: relative; padding-top: calc(60% + 100px); width: 100%;">
