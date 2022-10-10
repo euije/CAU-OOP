@@ -1,5 +1,5 @@
 CC=g++
-OBJS=main.o io_provider.o
+OBJS=main.o io_provider.o file_manager.o student_info.o
 TARGET=a.exe
 
 $(TARGET): $(OBJS)
