@@ -6,18 +6,17 @@
 
 class IOProvider {
 private:
-    int mainMenuOption;
-    int insertionOption;
-    int searchOption;
-    int sortingOption;
+    static void inputValidOption(int *option, char lowerBound, char upperBound);
+    static void inputValidSearchKeyword(int option, string* keyword);
+    static void printWrongInputError(int error);
+    static void printWrongOptionError(char lowerBound, char upperBound);
 
 public:
-    void outputMainMenu();
-    void inputMainMenu();
-    void IOinsertion();
-    void outputStudentInfo(vector<StudentInfo> students, int searchOption, string keyword);
+    void IOMainMenu(int* option);
+    void IOInsertion();
+    void IOSearch(int* option, string* keyword);
 
-    int isSameKeyword(StudentInfo student, int searchOption, string keyword);
-    void printStudentInfoFormatted(StudentInfo student);
+    void outputStudentsInfoWithOption(vector<StudentInfo> students, int searchOption, string keyword);
+    static void printStudentInfoFormatted(StudentInfo student);
 };
 #endif
