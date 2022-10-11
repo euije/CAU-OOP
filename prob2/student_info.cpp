@@ -3,6 +3,22 @@
 
 using namespace std;
 
+int StudentInfo::compareName(StudentInfo a, StudentInfo b){
+    return a.getName().compare(b.getName()) < 0 ? 1 : 0;
+}
+
+int StudentInfo::compareStudentID(StudentInfo a, StudentInfo b){
+    return a.getStudentID().compare(b.getStudentID()) < 0 ? 1 : 0;
+}
+
+int StudentInfo::compareAdmissionYear(StudentInfo a, StudentInfo b){
+    return a.getStudentID().substr(0, 4).compare(b.getStudentID().substr(0, 4)) < 0 ? 1 : 0;
+}
+
+int StudentInfo::compareDepartment(StudentInfo a, StudentInfo b){
+    return a.getDepartment().compare(b.getDepartment()) < 0 ? 1 : 0;
+}
+
 bool StudentInfo::isValidYear(string _year)
 {
     // if _year is not 4 length string
@@ -63,27 +79,6 @@ bool StudentInfo::isHasOnlyAlphabet(string name)
     }
 
     return true;
-}
-
-string StudentInfo::getName()
-{
-    return this->name;
-}
-string StudentInfo::getStudentID()
-{
-    return this->studentID;
-}
-string StudentInfo::getBirthYear()
-{
-    return this->birthYear;
-}
-string StudentInfo::getDepartment()
-{
-    return this->department;
-}
-string StudentInfo::getTel()
-{
-    return this->tel;
 }
 
 bool StudentInfo::isValidName(string _name)

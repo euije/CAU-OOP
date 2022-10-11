@@ -14,14 +14,15 @@ using namespace std;
 
 /**
  * @brief Class that contains information of student
- * 
+ *
  * @param name not nullable, up to 15
- * @param studentID not nullable, exactly 10, 
+ * @param studentID not nullable, exactly 10,
  * @param birthYear exactly 4
  * @param department up to string.MAX_LENGTH
  * @param tel up to 12
  */
-class StudentInfo {
+class StudentInfo
+{
 private:
     string name;
     string studentID;
@@ -36,17 +37,28 @@ private:
 public:
     StudentInfo(string _name, string _studentID, string _birthYear, string _department, string _tel);
 
-    string getName();
-    string getStudentID();
-    string getBirthYear();
-    string getDepartment();
-    string getTel();
-    
+    string getName() { return this->name; }
+    string getStudentID() { return this->studentID; }
+    string getBirthYear() { return this->birthYear; }
+    string getDepartment() { return this->department; }
+    string getTel() { return this->tel; }
+
+    void setName(string _name) { this->name = _name; }
+    void setStudentID(string _studentID) { this->studentID = _studentID; }
+    void setBirthYear(string _birthYear) { this->birthYear = _birthYear; }
+    void setDepartment(string _department) { this->department = _department; }
+    void setTel(string _tel) { this->tel = _tel; }
+
     static bool isValidName(string _name);
     static bool isValidStudentID(string _studentID);
     static bool isValidBirthYear(string _birthYear);
     static bool isValidDepartment(string _department);
     static bool isValidTel(string _tel);
+
+    static int compareName(StudentInfo a, StudentInfo b);
+    static int compareStudentID(StudentInfo a, StudentInfo b);
+    static int compareAdmissionYear(StudentInfo a, StudentInfo b);
+    static int compareDepartment(StudentInfo a, StudentInfo b);
 
     bool isSameKeyword(int searchOption, string keyword);
 };
