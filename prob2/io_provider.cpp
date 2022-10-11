@@ -9,12 +9,14 @@ using namespace std;
 
 void IOProvider::printWrongInputError(int error)
 {
-    string fields[5] = {
+    string fields[7] = {
         "",
         "Student name",
         "Student ID",
         "Admission year",
-        "Department name"};
+        "Department name",
+        "Birth Year",
+        "Tel"};
 
     cout << '\n'
          << "You write wrong " << fields[error] << "." << endl;
@@ -48,7 +50,6 @@ void IOProvider::inputValidOption(int *option, char lowerBound, char upperBound)
 
         IOProvider::printWrongOptionError(lowerBound, upperBound);
     }
-    *option = -1;
 }
 
 void IOProvider::inputValidSearchKeyword(int option, string *keyword)
@@ -127,17 +128,83 @@ void IOProvider::IOMainMenu(int *option)
     cout << endl;
 }
 
-void IOProvider::IOInsertion()
+void IOProvider::IOInsertion(StudentInfo* student, vector<StudentInfo> instances)
 {
-    cout << "Name ";
+    string input;
 
-    cout << "Student ID (10 digits) ";
+    bool isExist = false;
 
-    cout << "Birth Year (4 digits) ";
+    while(1){
+        cout << "Name ";
+        std::getline(cin, input);
+        
+        if(StudentInfo::isValidName(input)){
+            student->setName(input);
+            break;
+        }
 
-    cout << "Department ";
+        this->printWrongInputError(1); cout << endl;
+    }
 
-    cout << "Tel ";
+    while(1){
+        cout << "Student ID (10 digits) ";
+        std::getline(cin, input);
+
+        for(int i = 0; i < instances.size(); i++){
+            if(instances[i].getStudentID().compare(input) == 0){
+                isExist = true;
+                continue;
+            }
+        }
+        if(isExist){
+            cout << "Error : Already inserted\n" << endl;
+            isExist = false;
+            continue;
+        }
+
+        if(StudentInfo::isValidStudentID(input) && !isExist){
+            student->setStudentID(input);
+            break;
+        }
+
+        this->printWrongInputError(2); cout << endl;
+    }
+
+    while(1){
+        cout << "Birth Year (4 digits) ";
+        std::getline(cin, input);
+        
+        if(StudentInfo::isValidBirthYear(input)){
+            student->setBirthYear(input);
+            break;
+        }
+
+        this->printWrongInputError(5); cout << endl;
+    }
+
+    while(1){
+        cout << "Department ";
+        std::getline(cin, input);
+        
+        if(StudentInfo::isValidDepartment(input)){
+            student->setDepartment(input);
+            break;
+        }
+
+        this->printWrongInputError(4); cout << endl;
+    }
+
+    while(1){
+        cout << "Tel ";
+        std::getline(cin, input);
+        
+        if(StudentInfo::isValidTel(input)){
+            student->setTel(input);
+            break;
+        }
+
+        this->printWrongInputError(6); cout << endl;
+    }
 }
 
 void IOProvider::IOSearch(int *option, string *keyword)
@@ -165,6 +232,18 @@ void IOProvider::IOSearch(int *option, string *keyword)
     {
         cout << "Program went something wrong." << endl;
     }
+}
+
+void IOProvider::IOSorting(int* option){
+    cout << "- Sorting Option -" << endl;
+    cout << "1. Sort by Name" << endl;
+    cout << "2. Sort by Student ID" << endl;
+    cout << "3. Sort by Admission Year" << endl;
+    cout << "4. Sort by Department name" << endl;
+    
+    IOProvider::inputValidOption(option, '1', '4');
+
+    cout << endl;
 }
 
 void IOProvider::outputStudentsInfoWithOption(vector<StudentInfo> students, int searchOption, string keyword)

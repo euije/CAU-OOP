@@ -13,8 +13,9 @@ private:
 
 public:
     void IOMainMenu(int* option);
-    void IOInsertion();
+    void IOInsertion(StudentInfo* student, vector<StudentInfo> instances);
     void IOSearch(int* option, string* keyword);
+    void IOSorting(int* option);
 
     void outputStudentsInfoWithOption(vector<StudentInfo> students, int searchOption, string keyword);
     static void printStudentInfoFormatted(StudentInfo student);
