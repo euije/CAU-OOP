@@ -6,10 +6,18 @@
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [
-                "-I",
-                "/usr/local/Cellar/freeglut/3.4.0/include/GL",
-                "-L",
-                "/usr/local/Cellar/freeglut/3.4.0/lib"
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Headers",
+                "-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries",
+                "-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Versions/A/Headers",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-framework",
+                "OpenGL",
+                "-framework",
+                "GLUT"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
